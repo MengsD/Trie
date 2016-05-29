@@ -132,7 +132,7 @@ void Trie::traverse(TrieNode* p_node)
         cout << "key = " << *(int*)p_node->key <<  " count = " << p_node->count << endl; 
         p_node->data->output();
     }
-    for (int i = 0; i < 255; ++i) {
+    for (int i = 0; i < num_byte; ++i) {
         if (p_node->branch[i] == NULL)
             continue;
         traverse(p_node->branch[i]);
@@ -144,7 +144,7 @@ void Trie::destroy(TrieNode* p_node)
     if (p_node != p_root && p_node->data != NULL) {
         delete p_node->data;
     }
-    for (int i = 0; i < 255; ++i) {
+    for (int i = 0; i < num_byte ++i) {
         if (p_node->branch[i] == NULL)
             continue;
         destroy(p_node->branch[i]);
