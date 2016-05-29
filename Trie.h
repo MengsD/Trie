@@ -1,10 +1,10 @@
 /**
  * @file Trie.h
- * @author Mengsu Ding<dingmengsu@ict.ac.cn> 
+ * @author Mengsu Ding<dingmengsu@ict.ac.cn> and Shimin Chen<chensm@ict.ac.cn>
  * @version 0.0
  *
  * @section LICENSE
- * Copyright (c) 2016 Mengsu Ding. All Rights Reserved.
+ * Copyright (c) 2016 Mengsu Ding, Shimin Chen. All Rights Reserved.
  * 
  * @section DESCRIPTION
  * 
@@ -70,8 +70,8 @@ public:
      */
     void insert(const void* data, const int len);
 
-    /** Clear the list, which is called to destroy the list. */
-    void clear();
+    /** Destroy the list, which is called to destroy the list. */
+    void destroy();
 
     /** Output the list . */
     void output();
@@ -88,20 +88,19 @@ public:
 class Trie {  
 public:  
     struct TrieNode{  
-        int   count;                // count the same key
-        const void* key;            // record key
-        List* data;                 // record list of values which maps to the same key
-        TrieNode* branch[num_byte]; // pointer to branches for the node 
+        int         count;             // count the same key
+        const void* key;               // record key
+        List*       data;              // record list of values which maps to the same key
+        TrieNode*   branch[num_byte];  // pointer to branches for the node 
         /** Constructor. */
         TrieNode();   
     };  
 
-    TrieNode* p_root;               // point to root node
+    TrieNode* p_root;                  // point to root node
 
 public:  
     /** Constructor. */
     Trie();  
-//    Trie(Trie& tr);  
 
     /** Destructor. */
     virtual ~Trie();  
@@ -125,6 +124,9 @@ public:
 
     /** Traverse the Trie in preorder. */ 
     void traverse(TrieNode* p_node);
+
+    /** Destroy the trie, which is called to destroy the list. */
+    void destroy(TrieNode* p_node);
 };
 
 #endif 
