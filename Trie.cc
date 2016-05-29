@@ -12,7 +12,10 @@ List::Node::Node(const void* data, const int len) {
 }
         
 List::Node::~Node () {
-    delete (char*)p_value;
+    if (p_value != NULL) {
+        delete (char*)p_value;
+        p_value = NULL;
+    }
 }
 
 List::List() : p_head(NULL), p_tail(NULL) { }
@@ -36,6 +39,7 @@ void List::destroy() {
         Node* p_node = p_current;
         p_current    = p_current->next;
         delete p_node;
+        p_node = NULL;
     }
 }
 
@@ -69,7 +73,11 @@ Trie::TrieNode::TrieNode() : count(0), key(NULL), data(NULL) {
 Trie::Trie():p_root(NULL) { }  
 
 Trie::~Trie(){
-    destroy(p_root);
+    if (p_root != NULL) {
+        destroy(p_root);
+        delete p_root;
+        p_root = NULL;
+    }
 }  
 
 List* Trie::search(const char* key, const int len) const 
@@ -139,6 +147,6 @@ void Trie::destroy(TrieNode* p_node)
     for (int i = 0; i < 255; ++i) {
         if (p_node->branch[i] == NULL)
             continue;
-        traverse(p_node->branch[i]);
+        destroy(p_node->branch[i]);
     } 
 }
