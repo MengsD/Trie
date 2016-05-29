@@ -1,10 +1,10 @@
 /**
  * @file Trie.h
- * @author Mengsu Ding<dingmengsu@ict.ac.cn> and Shimin Chen<chensm@ict.ac.cn>
+ * @author Mengsu Ding<dingmengsu@ict.ac.cn>
  * @version 0.0
  *
  * @section LICENSE
- * Copyright (c) 2016 Mengsu Ding, Shimin Chen. All Rights Reserved.
+ * Copyright (c) 2016 Mengsu Ding.All Rights Reserved.
  * 
  * @section DESCRIPTION
  * 
@@ -125,7 +125,7 @@ public:
     /** Traverse the Trie in preorder. */ 
     void traverse(TrieNode* p_node);
 
-    /** Destroy the trie, which is called to destroy the list. */
+    /** Destroy the trie. */
     void destroy(TrieNode* p_node);
 };
 
