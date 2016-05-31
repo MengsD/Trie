@@ -1,1 +1,6 @@
+The version aims to sort non-string type values. 
 
+We convert the value(int/double type) into characters and insert it into the tree
+by iterating from the high byte to the low byte, which is different from string.
+
+To get values in asceding order, we traverse the tire in preoder.
