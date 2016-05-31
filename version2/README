@@ -1,6 +1,8 @@
 The version aims to sort non-string type values. 
 
-We convert the value(int/double type) into characters and insert it into the tree
-by iterating from the high byte to the low byte, which is different from string.
+We convert the value(int/double type) into characters(range: -128 ~ 127) 
+and insert it into the tree by iterating from the high byte to the low byte, 
+which is different from string.
+For those negtive bytes, we map them into branch: byte + 256
 
 To get values in asceding order, we traverse the tire in preoder.
